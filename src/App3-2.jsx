@@ -5,13 +5,19 @@ const BatteryContext = createContext();
 const OnlineContext = createContext();
 
 class Leaf extends Component {
-  // 单组件中使用contentType很简单
-  static contextType = BatteryContext;
   render() {
-    // 设置contextType后 leaf组件有了新属性context
-    const battery = this.context;
     return (
-      <h1>Battery:{battery}</h1> 
+      <BatteryContext.Consumer>
+        {
+          battery => (
+            <OnlineContext.Consumer>
+              {
+                online => <h1>Battery:{battery},Online: {String(online)}</h1> 
+              }
+            </OnlineContext.Consumer>
+          )
+        }
+      </BatteryContext.Consumer>
     )
   }
 }
