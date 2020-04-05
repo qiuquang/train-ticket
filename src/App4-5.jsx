@@ -6,10 +6,12 @@ function Counter(props) {
   );
 }
 
+// useMemo(() => fn) 等价下面
+// useCallback(fn)
 function App(params) {
   const [count, setCount] = useState(0);
 
-  // 不传每次执行 [] 只存一次，渲染期间完成
+  // 不传每次执行 [] 只存一次，渲染期间完成 useEffect是渲染完成之后执行
   const double = useMemo(() => {
     return count*2;
   }, [count]);

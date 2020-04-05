@@ -15,6 +15,7 @@ class Foo extends Component {
   }
 }
 
+// contextType 用法
 class Bar extends Component {
   static contextType = CountContext;
   render() {
@@ -26,6 +27,7 @@ class Bar extends Component {
 }
 
 // function 用useContext
+// 类组件用Provieder 和 Consumer
 function Counter() {
   const count = useContext(CountContext);
   return (
